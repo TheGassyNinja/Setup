@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# Use fzf to select packages to install (xbps-install)
+# Use fzf to query packages (xbps-query)
+# Use fzf to remove packages (xbps-remove)
+
+# Install fzf if not already installed
+if ! command -v fzf &> /dev/null
+then
+    xbps-install fzf
+fi
+
+# case statement to determine which command to run
+case $1 in
+    Install|install|I|i)
+        sudo xbps-install -Sy
+        packages=$(xbps-query -Rs '' | awk '{print $2}' | sed 's/^>//')
+        selected=$(echo "$packages" | fzf --multi --prompt="Select package(s) to install: ")
+            if [ -z "$selected" ]; then
+                    echo "No package selected. Exiting..."
+                    exit 1
+        fi
+                        echo "The following package(s) will be installed:"
+                        echo "$selected"
+                        read -p "Do you want to proceed? (y/N): " confirmation
+            if [[ "$confirmation" =~ ^[Yy]$ ]]; then
+                        sudo xbps-install -S $selected
+                        echo -e "\n $(date +'[%m/%d] [%H:%M]') \n$selected " >> additions.list
+                    else
+                        echo "Installation canceled."
+                        exit 0
+        fi
+;;
+
+    Query|query|Q|q)
+        sudo xbps-install -Sy
+        packages=$(xbps-query -Rs '' | awk '{print $2}' | sed 's/^>//')
+        selected=$(echo "$packages" | fzf --multi --prompt="Select package(s) to instiall: ")
+            if [ -z "$selected" ]; then
+                    echo "No package selected. Exiting..."
+                    exit 1
+        fi
+                        echo "$selected"
+                        read -p "Do you want to proceed? (y/N): " confirmation
+                if [[ "$confirmation" =~ ^[Yy]$ ]]; then
+                        xbps-query -R $selected
+                    else
+                        echo "Installation canceled."
+                        exit 0
+            fi
+;;
+    Remove|remove|R|r)
+        echo "[ [R]emove is NOT written yet. ]"
+        ;;
+    *)
+        echo "Usage: fzf-xbps [ [I]nstall | [Q]uery | [R]emove ]"
+        ;;
+esac
+

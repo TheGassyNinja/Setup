@@ -1,0 +1,11 @@
+
+DISPLAY=:0;
+#*/5 * * * * /home/thegassyninja/.local/bin/Crons/weather.sh >> /home/thegassyninja/.local/cronlog.txt 2>&1
+*/30 * * * * /home/thegassyninja/.local/bin/Crons/updates.sh >> /home/thegassyninja/.local/cronlog.txt 2>&1
+*/3 * * * * /home/thegassyninja/.local/bin/Crons/status >> /home/thegassyninja/.local/cronlog.txt 2>&1
+*/1 * * * * /home/thegassyninja/.local/bin/Crons/ram-mon.sh >> /home/thegassyninja/.local/cronlog.txt 2>&1
+*/3 * * * * /home/thegassyninja/.local/bin/Rss/Master-RSS.sh >> /home/thegassyninja/.local/cronlog.txt 2>
+
+
+ 
+

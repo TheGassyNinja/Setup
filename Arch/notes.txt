@@ -1,0 +1,52 @@
+# Before Install
+# https://archinstall.archlinux.page/index.html
+# Arch - Xorg install
+
+
+# Echo Script description and list default (vim fzf git ...) packages. (offer quit option) 
+# check for packages and install 
+
+
+
+# Git install script
+
+    # (Install pacman and AUR packges) (see package.txt and AUR.txt)
+        # Pick WM(s) and Emulator(s). ??? More Here ??? (use fzf)
+            # Hyprland/Wayland packages IF (qtile, Hyprland, Sway..etc)
+        #   
+    # Git clone repos 
+    # List repos and description (after cd ~/Git)
+    # Pick one or more (with fzf)
+    #
+#
+
+# Start services (SSH CRON)
+    # Add default crontabs
+
+
+# Vim setup
+
+# Tmux setup
+    # TPM (OR ???)
+        # https://github.com/tmux-plugins/tpm
+
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    # Use prefix + I to (I)nstall plugins 
+    # Add tmux first startup script 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

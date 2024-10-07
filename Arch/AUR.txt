@@ -1,0 +1,4 @@
+spotify-player-full
+# wlogout
+pywal-16-colors
+python-pulsectl-asyncio
